@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAYGRAFIXDESIGN</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="images/logo.png" class="nav-logo">
+        <h2 class="logo-text">KAYGRAFIX</h2>
+    </div>
+
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu(event)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+
+    <div class="slides">
+        <img class="slide" src="images/ACTTSS.jpg">
+        <img class="slide" src="images/beauty obituary 2.jpg">
+        <img class="slide" src="images/beauty obituary.jpg">
+        <img class="slide" src="images/beauty3by4.jpg">
+        <img class="slide" src="images/matchday.jpg">
+        
+    </div>
+
+    <div class="dark-overlay"></div>
+
+    <div class="hero-text">
+        <h1 class="hero-title">KAYGRAFIXDESIGN</h1>
+        <p>Creative Graphic Designer</p>
+    </div>
+
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <div class="scroll-down"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+    <h2>About Me</h2>
+    <p>
+        I am a passionate graphic designer focused on creating visually engaging designs 
+        that communicate ideas effectively.
+    </p>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio reveal" id="portfolio">
+    <h2>Check out some of our Professional Designs</h2>
+
+    <!-- CATEGORY 1 -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h3>Birthday Flyers</h3>
+            <span class="icon">+</span>
+        </div>
+
+        <div class="category-content">
+            <img src="images/ACTTSS.jpg" onclick="openLightbox(this.src)">
+            <img src="images/beauty obituary 2.jpg" onclick="openLightbox(this.src)">
+            <img src="images/beauty3by4.jpg" onclick="openLightbox(this.src)">
+        </div>
+    </div>
+
+    <!-- CATEGORY 2 -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h3>Event Flyers</h3>
+            <span class="icon">+</span>
+        </div>
+        <div class="category-content">
+            <img src="images/matchday.jpg" onclick="openLightbox(this.src)">
+            <img src="images/nii dad.jpg" onclick="openLightbox(this.src)">
+        </div>
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+    <h2>Contact Information</h2>
+
+    <p>
+        Email: 
+        <a href="mailto:kaygrafixdesign@gmail.com" class="contact-link">
+            kaygrafixdesign@gmail.com
+        </a>
+    </p>
+
+    <p>
+        WhatsApp: 
+        <a href="https://wa.me/233571745254" target="_blank" class="contact-link">
+            +233 571 745 254
+        </a>
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 KAYGRAFIXDESIGN</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
