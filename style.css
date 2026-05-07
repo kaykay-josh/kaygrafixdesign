@@ -7,9 +7,9 @@
 
 /* BODY */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #0d0d0d;
-    color: white;
+    font-family: 'Open sans', sans-serif;
+    background: #0b0b0b;
+    color: #f5f1e8;
     overflow-x: hidden;
 
     opacity: 0;
@@ -31,7 +31,7 @@ body.loaded {
     justify-content: space-between;
     align-items: center;
 
-    background: rgba(0,0,0,0.6);
+    background: rgba(11,11,11,0.6);
     backdrop-filter: blur(10px);
     z-index: 1000;
 
@@ -57,8 +57,9 @@ body.loaded {
     object-fit: cover;
 }
 
-.logo-text {
-    font-weight: 700;
+.primary-logo {
+    display: flex;
+    width: 120px;
 }
 
 /* NAV LINKS */
@@ -70,13 +71,13 @@ body.loaded {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: #f5f1e8;
     transition: 0.3s;
 }
 
 .navbar a:hover {
     text-decoration: underline;
-    color: #FFD700;
+    color: #d4af37;
 }
 
 /* HAMBURGER */
@@ -90,19 +91,21 @@ body.loaded {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 2px;
     transition: 0.3s;
 }
 
 /* HAMBURGER ANIMATION */
 .hamburger.active span:nth-child(1) {
+    background: #d4af37;
     transform: rotate(45deg) translate(5px, 5px);
 }
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
+    background: #d4af37;
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
@@ -120,7 +123,7 @@ body.loaded {
         top: 60px;
         right: 10px;
 
-        background: rgba(0,0,0,0.95);
+        background: rgba(0,0,0,0.7);
         padding: 20px;
         border-radius: 10px;
     }
@@ -144,8 +147,8 @@ body.loaded {
 /* SLIDER */
 .slides {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: 105%;
+    width: 105%;
     z-index: 0;
 }
 
@@ -165,26 +168,34 @@ body.loaded {
 
 /* HERO TEXT */
 .hero-text {
+    display: block;
+    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    text-align: center;
     z-index: 2;
+    width: 40%;
 }
+
+.logokaygfx{
+    margin: auto;
+    width: 30%;
+    margin-bottom: 15px;
+}
+
 
 /* FIXED HERO TITLE */
 .hero-title {
-    font-size: clamp(1.2rem, 5vw, 3.5rem);
-    white-space: nowrap;
-    max-width: 90vw;
-    overflow: hidden;
+    margin: auto;
+    width: 100%;
 }
 
 .hero-text p {
-    margin-top: 10px;
-    font-size: 1.0rem;
+    margin-top: 15px;
+    font-size: 1.5.0rem;
+    letter-spacing: 1.5px;
+    font-weight: 450;
 }
 
 /* MOBILE HERO FIX */
@@ -201,8 +212,8 @@ body.loaded {
 
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.8),
-        rgba(0,0,0,0.9)
+        rgba(11,11,11,0.8),
+        rgba(0,0,0,0.7)
     );
 
     z-index: 1;
@@ -217,15 +228,15 @@ section {
 }
 
 .about {
-    background: #111;
+    background: #0b0b0b;
 }
 
 .portfolio {
-    background: #0d0d0d;
+    background: #0b0b0b;
 }
 
 .contact {
-    background: #111;
+    background: #0b0b0b;
 }
 
 /* SCROLL ANIMATION */
@@ -261,7 +272,7 @@ section {
 
 .category-header:hover {
     background: #1a1a1a;
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
 .icon {
@@ -310,30 +321,43 @@ section {
 /* LIGHTBOX */
 #lightbox {
     position: fixed;
-    width: 100%;
-    height: 100%;
-
-    top: 0;
-    left: 0;
-
-    background: rgba(0,0,0,0.9);
+    inset: 0;
+    background: rgba(11,11,11,0.95);
 
     display: none;
     justify-content: center;
     align-items: center;
 
     z-index: 999;
+
+    cursor: pointer;
+    overflow: hidden; /* normal state */
 }
 
+/* IMAGE */
 #lightbox img {
     max-width: 90%;
     max-height: 90%;
     border-radius: 10px;
+    transition: transform 0.3s ease;
 }
+
+/* ZOOM MODE */
+#lightbox.zoomed {
+    overflow: auto; /* 🔥 enables scroll */
+    cursor: default;
+}
+
+/* ZOOMED IMAGE */
+#lightbox.zoomed img {
+    transform: scale(2); /* zoom level */
+    cursor: default;
+}
+
 
 /* CONTACT */
 .contact-link {
-    color: #FFD700;
+    color: #d4af37;
     text-decoration: none;
 }
 .contact-link:active {
@@ -342,7 +366,7 @@ opacity: 0.7;
 
 .contact-link:hover {
     text-decoration: underline;
-    color: #ffcc00;
+    color: #d4af37;
 }
 
 /* FOOTER */
@@ -354,12 +378,7 @@ footer {
 
 /* GOLD ACCENTS (TEXT ONLY, NO BACKGROUND) */
 h1, h2 {
-    color: #FFD700;
-}
-
-/* Navbar logo text */
-.logo-text {
-    color: #FFD700;
+    color: #d4af37;
 }
 
 /* Contact links already gold — keep as is */
@@ -396,7 +415,7 @@ html {
 .social .icon {
     width: 27px;
     height: 27px;
-    background: white;
+    background: #f5f1e8;
     border-radius: 50%;
 
     display: flex;
@@ -423,7 +442,7 @@ html {
     max-width: 0;
     overflow: hidden;
 
-    color: white;
+    color: #f5f1e8;
     white-space: nowrap;
 
     opacity: 0;
@@ -496,4 +515,8 @@ html {
 /* GLOW EFFECT */
 .social:hover .icon {
     box-shadow: 0 0 15px rgba(139, 141, 255, 0.6);
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
