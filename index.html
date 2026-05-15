@@ -1,430 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KayGFX</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KayGFX — Visual Design Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/png" href="icons/favicon.png">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <img src="SVG/icon.svg" class="nav-logo" alt="KayGFX Icon">
+            <img src="SVG/primarylogo.svg" class="primary-logo" alt="KayGFX">
+        </div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="hire-btn">Hire Me</a>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu(event)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-        <!-- NAVBAR -->
-        <nav class="navbar">
-            <div class="nav-left">
-                <img src="SVG/icon.svg" class="nav-logo">
-                <img src="SVG/primarylogo.svg" class="primary-logo">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="slides">
+            <img class="slide" src="1x/Artboard-7.jpg" alt="">
+            <img class="slide" src="1x/Artboard-10.jpg" alt="">
+            <img class="slide" src="1x/Artboard-12.jpg" alt="">
+            <img class="slide" src="1x/Artboard-13.jpg" alt="">
+            <img class="slide" src="1x/Artboard-14.jpg" alt="">
+            <img class="slide" src="1x/Artboard-15.jpg" alt="">
+            <img class="slide" src="1x/Artboard-16.jpg" alt="">
+            <img class="slide" src="1x/Artboard-17.jpg" alt="">
+            <img class="slide" src="1x/Artboard-18.jpg" alt="">
+            <img class="slide" src="1x/Artboard-19.jpg" alt="">
+            <img class="slide" src="1x/Artboard-20.jpg" alt="">
+            <img class="slide" src="1x/Artboard-21.jpg" alt="">
+        </div>
+
+        <div class="dark-overlay"></div>
+
+        <div class="hero-text">
+            <img class="logokaygfx hero-logo-anim" src="SVG/icon.svg" alt="KayGFX">
+            <img class="hero-title hero-title-anim" src="SVG/secondarylogo.svg" alt="Kaygrafix Design">
+            <p class="hero-tagline"><span id="typed-text"></span><span class="cursor">|</span></p>
+            <div class="hero-cta hero-cta-anim">
+                <a href="#portfolio" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-outline">Hire Me</a>
             </div>
+        </div>
 
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div class="dots">
+            <span class="dot active">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+            <span class="dot">&#x2022;</span>
+        </div>
 
-            <div class="hamburger" id="hamburger" onclick="toggleMenu(event)">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-        <!-- HERO -->
-        <section class="hero" id="hero">
+    <!-- STATS BAR -->
+    <div class="stats-bar reveal">
+        <div class="stat-item">
+            <span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects Done</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="80">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="17">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Design Categories</span>
+        </div>
+    </div>
 
-            <div class="slides">
-                <img class="slide" src="1x/Artboard-7.jpg">
-                <img class="slide" src="1x/Artboard-10.jpg">
-                <img class="slide" src="1x/Artboard-12.jpg">
-                <img class="slide" src="1x/Artboard-13.jpg">
-                <img class="slide" src="1x/Artboard-14.jpg">
-                <img class="slide" src="1x/Artboard-15.jpg">
-                <img class="slide" src="1x/Artboard-16.jpg">
-                <img class="slide" src="1x/Artboard-17.jpg">
-                <img class="slide" src="1x/Artboard-18.jpg">
-                <img class="slide" src="1x/Artboard-19.jpg">
-                <img class="slide" src="1x/Artboard-20.jpg">
-                <img class="slide" src="1x/Artboard-21.jpg">
-            </div>
-
-            <div class="dark-overlay"></div>
-
-            <div class="hero-text">
-                <img class="logokaygfx" src="SVG/icon.svg">
-                <img class="hero-title" src="SVG/secondarylogo.svg">
-                <p>Shaping Visual Identity</p>
-            </div>
-
-            <div class="dots">
-                <span class="dot active">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-                <span class="dot">&#x2022;</span>
-            </div>
-
-            <div class="scroll-down"></div>
-        </section>
-
-        <!-- ABOUT -->
-        <section class="about reveal" id="about">
-            <h2>About Me</h2>
-            <p>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-inner reveal">
+            <div class="about-label">About Me</div>
+            <h2 class="about-heading">Crafting Visuals<br><em>That Speak</em></h2>
+            <p class="about-text">
                 I am a passionate graphic designer focused on creating visually engaging designs 
                 that communicate ideas effectively. If you are looking forward to growing and building
                 your brand with the best of designs that are very eye-catchy and engaging, <strong>Kaygrafix</strong> got you covered.
             </p>
-        </section>
+            <div class="about-tags">
+                <span>Brand Identity</span>
+                <span>Flyer Design</span>
+                <span>Social Media</span>
+                <span>Photo Editing</span>
+                <span>T-Shirt Design</span>
+                <span>Certificates</span>
+            </div>
+            <a href="#contact" class="btn-primary">Work With Me</a>
+        </div>
+    </section>
 
-        <!-- PORTFOLIO -->
-        <section class="portfolio reveal" id="portfolio">
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <div class="about-label">Portfolio</div>
             <h2>Catalog of Designs</h2>
-
-            <!-- CATEGORY: Church Events -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Church Events</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/15-DAYS.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/july.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Infographics -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Infographics</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/april-read.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/MARCH.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Special Events Flyers -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Special Events Flyers</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/NAMING.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/BIBLE-FEB.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/GOB3.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/grads.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/ACTTSS.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Campaign Event Design -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Campaign Event Design</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/CHAIRMAN.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/campaign.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/key-reforms.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Certificates -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Certificates</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/franco_democert.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/cert-1.jpg" onclick="openLightbox(this.src)">     
-                    <img src="images/cert-3.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Citations -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Citations</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/mum-citation-epuc.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Social Media Posts -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Social Media Posts</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/gruds-oil.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/counseling.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/fredkac.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/samedia3.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/samedia2.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/social-media-post-2.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/social-media-post-1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/powerline.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/samedia1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/fundsappeal.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: T-Shirt Designs -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>T-Shirt Designs</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/t-shirt-design-1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/t-shirt-design-2.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/t-shirt-design-3.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/t-shirt-design-4.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/aluminumBLUEBLACKMKP.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/aluminumyellowmockup.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/fodomenew.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/jhsshirtmissahoeblue.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/jhsshirtmissahoe.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/BAIKASHIRTMKPNEW.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Sports Design -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Sports Design</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/matchday.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Resume And CV -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Resume And CV</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/cv-joshua.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Book Covers -->
-            <!-- NOTE: Replace the src values below with your actual book cover image filenames -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Book Covers</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/book-cover-1.jpg" onclick="openLightbox(this.src)">
-                    <!-- Add your second book cover image here, e.g.: -->
-                    <!-- <img src="images/book-cover-2.jpg" onclick="openLightbox(this.src)"> -->
-                </div>
-            </div>
-
-            <!-- CATEGORY: Funeral Invitations -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Funeral Invitations</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/funeral_wom1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/funeralman.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/eliza_funeral.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/pozofuneral.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/elizabeth_funeral.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/beauty3by4.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/FUNERAL-2.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/funeral-11.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/FUNERALINVITATION.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/funeral-receipt.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Photo Restoration -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Photo Restoration</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/jacob.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/nii-dad.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Picture Editing -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Picture Editing</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/picture-edit-1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/picture-edit-2.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Complimentary Cards -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Complimentary Cards</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/comp-1.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/comp-2.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/comp-3.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Labels -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Labels</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/label-1.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Branding -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Branding</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="1x/Artboard-1.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-2.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-3.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-4.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-5.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-6.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-7.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-8.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-9.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-10.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-11.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-12.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-13.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-14.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-15.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-16.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-17.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-18.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-19.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-20.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-21.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-22.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-23.jpg" onclick="openLightbox(this.src)">
-                    <img src="1x/Artboard-24.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-            <!-- CATEGORY: Birthday Flyers -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Birthday Flyers</h3>
-                    <span class="icon">+</span>
-                </div>
-                <div class="category-content">
-                    <img src="images/bright-pic-birth.jpg" onclick="openLightbox(this.src)">
-                    <img src="images/ansahApp.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact reveal" id="contact">
-            <h2>Contact Information</h2>
-
-            <p>
-                Email: 
-                <a href="mailto:kaygrafixdesign@gmail.com" class="contact-link">
-                    kaygrafixdesign@gmail.com
-                </a>
-            </p>
-
-            <p>
-                WhatsApp: 
-                <a href="https://wa.me/233571745254" target="_blank" class="contact-link">
-                    +233 571 745 254
-                </a>
-            </p>
-
-            <div class="socials">
-
-                <a href="https://web.facebook.com/kkayjoshua" target="_blank" class="social facebook">
-                    <span class="icon"><img src="icons/facebook-svgrepo-com.svg"></span>
-                    <span class="label">Facebook</span>
-                </a>
-
-                <a href="https://www.instagram.com/kkayjoshua/?hl=en" target="_blank" class="social instagram">
-                    <span class="icon"><img src="icons/instagram-svgrepo-com.svg"></span>
-                    <span class="label">Instagram</span>
-                </a>
-
-                <a href="https://www.linkedin.com/in/kaykay-josh-4358473ba" target="_blank" class="social linkedin">
-                    <span class="icon"><img src="icons/linkedin-svgrepo-com.svg"></span>
-                    <span class="label">LinkedIn</span>
-                </a>
-
-                <a href="https://t.me/Joshkaykay" target="_blank" class="social telegram">
-                    <span class="icon"><img src="icons/Telegram_black_logo.svg"></span>
-                    <span class="label">Telegram</span>
-                </a>
-
-                <a href="https://www.threads.com/@kkayjoshua" target="_blank" class="social threads">
-                    <span class="icon"><img src="icons/500px-Threads_(app)_logo.svg.png"></span>
-                    <span class="label">Threads</span>
-                </a>
-
-                <a href="https://pin.it/7b5T5nLZ3" target="_blank" class="social pinterest">
-                    <span class="icon"><img src="icons/pinterest-svgrepo-com.svg"></span>
-                    <span class="label">Pinterest</span>
-                </a>
-
-                <a href="https://x.com/kaykay3551?s=09" target="_blank" class="social x">
-                    <span class="icon"><img src="icons/twitter-svgrepo-com.svg"></span>
-                    <span class="label">Twitter</span>
-                </a>
-
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 Kaygrafixdesign</p>
-        </footer>
-
-        <!-- LIGHTBOX -->
-        <div id="lightbox">
-            <img id="lightbox-img">
+            <p class="section-sub">Browse through categories of work crafted with precision and creativity</p>
         </div>
 
-        <script src="script.js"></script>
-    </body>
+        <!-- FILTER TABS -->
+        <div class="filter-tabs reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="church-events">Church Events</button>
+            <button class="filter-btn" data-filter="infographics">Infographics</button>
+            <button class="filter-btn" data-filter="special-events">Special Events</button>
+            <button class="filter-btn" data-filter="campaign">Campaign</button>
+            <button class="filter-btn" data-filter="certificates">Certificates</button>
+            <button class="filter-btn" data-filter="social-media">Social Media</button>
+            <button class="filter-btn" data-filter="t-shirt">T-Shirts</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="funeral">Funeral</button>
+            <button class="filter-btn" data-filter="other">Other</button>
+        </div>
+
+        <!-- PORTFOLIO GRID -->
+        <div class="portfolio-grid">
+
+            <!-- Church Events -->
+            <div class="grid-item" data-category="church-events"><img src="images/15-DAYS.jpg" class="lb-trigger" loading="lazy" alt="Church Event"><div class="grid-overlay"><span>Church Events</span></div></div>
+            <div class="grid-item" data-category="church-events"><img src="images/july.jpg" class="lb-trigger" loading="lazy" alt="Church Event"><div class="grid-overlay"><span>Church Events</span></div></div>
+
+            <!-- Infographics -->
+            <div class="grid-item" data-category="infographics"><img src="images/april-read.jpg" class="lb-trigger" loading="lazy" alt="Infographic"><div class="grid-overlay"><span>Infographics</span></div></div>
+            <div class="grid-item" data-category="infographics"><img src="images/MARCH.jpg" class="lb-trigger" loading="lazy" alt="Infographic"><div class="grid-overlay"><span>Infographics</span></div></div>
+
+            <!-- Special Events -->
+            <div class="grid-item" data-category="special-events"><img src="images/NAMING.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
+            <div class="grid-item" data-category="special-events"><img src="images/BIBLE-FEB.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
+            <div class="grid-item" data-category="special-events"><img src="images/GOB3.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
+            <div class="grid-item" data-category="special-events"><img src="images/grads.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
+            <div class="grid-item" data-category="special-events"><img src="images/ACTTSS.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
+
+            <!-- Campaign -->
+            <div class="grid-item" data-category="campaign"><img src="images/CHAIRMAN.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
+            <div class="grid-item" data-category="campaign"><img src="images/campaign.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
+            <div class="grid-item" data-category="campaign"><img src="images/key-reforms.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
+
+            <!-- Certificates -->
+            <div class="grid-item" data-category="certificates"><img src="images/franco_democert.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
+            <div class="grid-item" data-category="certificates"><img src="images/cert-1.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
+            <div class="grid-item" data-category="certificates"><img src="images/cert-3.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
+
+            <!-- Citations -->
+            <div class="grid-item" data-category="other"><img src="images/mum-citation-epuc.jpg" class="lb-trigger" loading="lazy" alt="Citation"><div class="grid-overlay"><span>Citations</span></div></div>
+
+            <!-- Social Media -->
+            <div class="grid-item" data-category="social-media"><img src="images/gruds-oil.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/counseling.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/fredkac.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/samedia3.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/samedia2.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/social-media-post-2.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/social-media-post-1.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/powerline.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/samedia1.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+            <div class="grid-item" data-category="social-media"><img src="images/fundsappeal.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
+
+            <!-- T-Shirts -->
+            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-1.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-2.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-3.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-4.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/aluminumBLUEBLACKMKP.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/aluminumyellowmockup.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/fodomenew.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/jhsshirtmissahoeblue.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/jhsshirtmissahoe.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+            <div class="grid-item" data-category="t-shirt"><img src="images/BAIKASHIRTMKPNEW.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
+
+            <!-- Sports -->
+            <div class="grid-item" data-category="other"><img src="images/matchday.jpg" class="lb-trigger" loading="lazy" alt="Sports"><div class="grid-overlay"><span>Sports Design</span></div></div>
+
+            <!-- Resume/CV -->
+            <div class="grid-item" data-category="other"><img src="images/cv-joshua.jpg" class="lb-trigger" loading="lazy" alt="Resume"><div class="grid-overlay"><span>Resume &amp; CV</span></div></div>
+
+            <!-- Book Covers -->
+            <div class="grid-item" data-category="other"><img src="images/book-cover-1.jpg" class="lb-trigger" loading="lazy" alt="Book Cover"><div class="grid-overlay"><span>Book Cover</span></div></div>
+
+            <!-- Funeral Invitations -->
+            <div class="grid-item" data-category="funeral"><img src="images/funeral_wom1.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/funeralman.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/eliza_funeral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/pozofuneral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/elizabeth_funeral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/beauty3by4.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/FUNERAL-2.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/funeral-11.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/FUNERALINVITATION.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+            <div class="grid-item" data-category="funeral"><img src="images/funeral-receipt.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
+
+            <!-- Photo Restoration -->
+            <div class="grid-item" data-category="other"><img src="images/jacob.jpg" class="lb-trigger" loading="lazy" alt="Photo Restoration"><div class="grid-overlay"><span>Photo Restoration</span></div></div>
+            <div class="grid-item" data-category="other"><img src="images/nii-dad.jpg" class="lb-trigger" loading="lazy" alt="Photo Restoration"><div class="grid-overlay"><span>Photo Restoration</span></div></div>
+
+            <!-- Picture Editing -->
+            <div class="grid-item" data-category="other"><img src="images/picture-edit-1.jpg" class="lb-trigger" loading="lazy" alt="Picture Edit"><div class="grid-overlay"><span>Picture Editing</span></div></div>
+            <div class="grid-item" data-category="other"><img src="images/picture-edit-2.jpg" class="lb-trigger" loading="lazy" alt="Picture Edit"><div class="grid-overlay"><span>Picture Editing</span></div></div>
+
+            <!-- Complimentary Cards -->
+            <div class="grid-item" data-category="other"><img src="images/comp-1.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
+            <div class="grid-item" data-category="other"><img src="images/comp-2.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
+            <div class="grid-item" data-category="other"><img src="images/comp-3.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
+
+            <!-- Labels -->
+            <div class="grid-item" data-category="other"><img src="images/label-1.jpg" class="lb-trigger" loading="lazy" alt="Label"><div class="grid-overlay"><span>Labels</span></div></div>
+
+            <!-- Branding -->
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-1.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-2.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-3.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-4.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-5.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-6.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-7.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-8.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-9.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-10.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-11.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-12.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-13.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-14.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-15.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-16.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-17.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-18.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-19.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-20.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-21.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-22.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-23.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+            <div class="grid-item" data-category="branding"><img src="1x/Artboard-24.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
+
+            <!-- Birthday Flyers -->
+            <div class="grid-item" data-category="special-events"><img src="images/bright-pic-birth.jpg" class="lb-trigger" loading="lazy" alt="Birthday Flyer"><div class="grid-overlay"><span>Birthday Flyers</span></div></div>
+            <div class="grid-item" data-category="special-events"><img src="images/ansahApp.jpg" class="lb-trigger" loading="lazy" alt="Birthday Flyer"><div class="grid-overlay"><span>Birthday Flyers</span></div></div>
+
+        </div>
+
+        <!-- LOAD MORE -->
+        <div class="load-more-wrap reveal">
+            <button class="btn-outline" id="load-more-btn">Load More</button>
+        </div>
+
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header reveal">
+            <div class="about-label">Testimonials</div>
+            <h2>What Clients Say</h2>
+        </div>
+
+        <div class="testimonial-track reveal">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Kaygrafix delivered an outstanding flyer design for our church event. Clean, professional and exactly what we envisioned. Highly recommend!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">EK</div>
+                    <div>
+                        <strong>Elder Kwame</strong>
+                        <span>Church Administrator</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Our brand identity came alive after working with Kay. The t-shirt designs were perfect — our team loved every single piece."</p>
+                <div class="client-info">
+                    <div class="client-avatar">AA</div>
+                    <div>
+                        <strong>Abena Asante</strong>
+                        <span>Business Owner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Quick turnaround, great communication, and the final product was stunning. Kay truly understands what it means to make a design speak."</p>
+                <div class="client-info">
+                    <div class="client-avatar">JM</div>
+                    <div>
+                        <strong>Joshua Mensah</strong>
+                        <span>Event Organiser</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"The social media graphics Kay made for us brought so much engagement. Clients kept asking who designed them — we're proud to say Kaygrafix!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">RO</div>
+                    <div>
+                        <strong>Ruth Osei</strong>
+                        <span>Marketing Manager</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-header reveal">
+            <div class="about-label">Contact</div>
+            <h2>Let's Work Together</h2>
+            <p class="section-sub">Ready to bring your vision to life? Send a message and let's create something great.</p>
+        </div>
+
+        <div class="contact-layout reveal">
+
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <div class="contact-detail">
+                    <div class="contact-icon">✉</div>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:kaygrafixdesign@gmail.com" class="contact-link">kaygrafixdesign@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <span class="contact-label">WhatsApp</span>
+                        <a href="https://wa.me/233571745254" target="_blank" class="contact-link">+233 571 745 254</a>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <a href="https://web.facebook.com/kkayjoshua" target="_blank" class="social facebook">
+                        <span class="icon"><img src="icons/facebook-svgrepo-com.svg" alt="Facebook"></span>
+                        <span class="label">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/kkayjoshua/?hl=en" target="_blank" class="social instagram">
+                        <span class="icon"><img src="icons/instagram-svgrepo-com.svg" alt="Instagram"></span>
+                        <span class="label">Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kaykay-josh-4358473ba" target="_blank" class="social linkedin">
+                        <span class="icon"><img src="icons/linkedin-svgrepo-com.svg" alt="LinkedIn"></span>
+                        <span class="label">LinkedIn</span>
+                    </a>
+                    <a href="https://t.me/Joshkaykay" target="_blank" class="social telegram">
+                        <span class="icon"><img src="icons/Telegram_black_logo.svg" alt="Telegram"></span>
+                        <span class="label">Telegram</span>
+                    </a>
+                    <a href="https://www.threads.com/@kkayjoshua" target="_blank" class="social threads">
+                        <span class="icon"><img src="icons/500px-Threads_(app)_logo.svg.png" alt="Threads"></span>
+                        <span class="label">Threads</span>
+                    </a>
+                    <a href="https://pin.it/7b5T5nLZ3" target="_blank" class="social pinterest">
+                        <span class="icon"><img src="icons/pinterest-svgrepo-com.svg" alt="Pinterest"></span>
+                        <span class="label">Pinterest</span>
+                    </a>
+                    <a href="https://x.com/kaykay3551?s=09" target="_blank" class="social x">
+                        <span class="icon"><img src="icons/twitter-svgrepo-com.svg" alt="Twitter"></span>
+                        <span class="label">Twitter</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-wrap">
+
+                <!-- SUCCESS MESSAGE -->
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon">✓</div>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                    <button class="btn-outline" id="formReset">Send Another Message</button>
+                </div>
+
+                <form
+                    class="contact-form"
+                    id="contactForm"
+                    action="https://formsubmit.co/kaygrafx@gmail.com"
+                    method="POST"
+                >
+                    <!-- FormSubmit hidden config -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Hire Request — Kaygrafix Website">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://kaykay-josh.github.io/kaygrafixdesign/?sent=true">
+
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Type of Service</option>
+                            <option>Flyer Design</option>
+                            <option>Branding / Logo</option>
+                            <option>Social Media Graphics</option>
+                            <option>T-Shirt Design</option>
+                            <option>Certificate / Citation</option>
+                            <option>Photo Editing / Restoration</option>
+                            <option>Other</option>
+                        </select>
+                        <label for="service">Type of Service</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary form-submit" id="submitBtn">
+                        <span id="submitText">Send Message</span>
+                        <span id="submitSpinner" style="display:none;">Sending…</span>
+                    </button>
+                    <p class="form-note" id="form-note"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="SVG/icon.svg" alt="KayGFX" class="nav-logo">
+                <img src="SVG/primarylogo.svg" alt="KayGFX" class="primary-logo">
+            </div>
+            <p class="footer-tagline">Shaping Visual Identity</p>
+            <p class="footer-copy">© 2026 Kaygrafixdesign. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+
+        <!-- CLOSE BUTTON -->
+        <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <line x1="1" y1="1" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="21" y1="1" x2="1" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- COUNTER -->
+        <div class="lb-counter" id="lbCounter">1 / 1</div>
+
+        <!-- PREV ARROW -->
+        <button class="lb-btn lb-arrow lb-prev" id="lbPrev" aria-label="Previous image">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <polyline points="18,4 8,14 18,24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- IMAGE STAGE -->
+        <div class="lb-stage" id="lbStage">
+            <img class="lb-img" id="lbImg" alt="Design preview">
+        </div>
+
+        <!-- NEXT ARROW -->
+        <button class="lb-btn lb-arrow lb-next" id="lbNext" aria-label="Next image">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <polyline points="10,4 20,14 10,24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- HINT -->
+        <div class="lb-hint" id="lbHint">Double-click to zoom</div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
