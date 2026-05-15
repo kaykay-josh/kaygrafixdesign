@@ -7,7 +7,7 @@
 
 /* BODY */
 body {
-    font-family: 'Open sans', sans-serif;
+    font-family: 'Poppins', sans-serif; /* FIX: was 'Open sans' which is not loaded */
     background: #0b0b0b;
     color: #f5f1e8;
     overflow-x: hidden;
@@ -35,7 +35,13 @@ body.loaded {
     backdrop-filter: blur(10px);
     z-index: 1000;
 
-    transition: 0.3s ease;
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease, background 0.4s ease;
+}
+
+/* NAVBAR HIDDEN - slides up out of view when lightbox is open */
+.navbar.hidden {
+    top: -100px;
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
@@ -142,6 +148,7 @@ body.loaded {
     height: 100vh;
     position: relative;
     overflow: hidden;
+    scroll-margin-top: 80px; /* FIX: prevent navbar covering hero when clicking Home */
 }
 
 /* SLIDER */
@@ -156,7 +163,7 @@ body.loaded {
     min-width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: zoom 10s  ease-in-out infinite;
+    animation: zoom 10s ease-in-out infinite;
 }
 
 /* ZOOM EFFECT */
@@ -167,9 +174,12 @@ body.loaded {
 }
 
 /* HERO TEXT */
+/* FIX: was display:block which doesn't center children; changed to flex column */
 .hero-text {
-    display: block;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -178,37 +188,39 @@ body.loaded {
     width: 40%;
 }
 
-.logokaygfx{
-    margin: auto;
+.logokaygfx {
     width: 30%;
     margin-bottom: 15px;
 }
 
-
 /* FIXED HERO TITLE */
 .hero-title {
-    margin: auto;
     width: 100%;
 }
 
+/* FIX: was invalid "1.5.0rem" */
 .hero-text p {
     margin-top: 15px;
-    font-size: 1.5.0rem;
+    font-size: 1.5rem;
     letter-spacing: 1.5px;
     font-weight: 450;
 }
 
 /* MOBILE HERO FIX */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: clamp(1rem, 6vw, 2rem);
+    .hero-text {
+        width: 80%;
+    }
+
+    .hero-text p {
+        font-size: clamp(0.8rem, 3vw, 1.2rem);
     }
 }
 
 /* OVERLAY */
 .dark-overlay {
     position: absolute;
-    inset: 0; /* top:0 right:0 bottom:0 left:0 */
+    inset: 0;
 
     background: linear-gradient(
         to bottom,
@@ -218,6 +230,29 @@ body.loaded {
 
     z-index: 1;
     pointer-events: none;
+}
+
+/* DOTS */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.dot.active {
+    color: #d4af37;
 }
 
 /* SECTIONS */
@@ -294,13 +329,14 @@ section {
 }
 
 .category.active .category-content {
-    max-height: 1000px;
+    max-height: 5000px;
     opacity: 1;
     transform: translateY(0);
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    padding: 5px;
 
     margin-top: 15px;
 }
@@ -308,14 +344,23 @@ section {
 /* IMAGES */
 .category-content img {
     width: 100%;
-    border-radius: 10px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
     cursor: pointer;
-
     transition: transform 0.3s;
+    padding: 5px;
 }
 
 .category-content img:hover {
     transform: scale(1.05);
+}
+
+/* MOBILE: 2 columns */
+@media (max-width: 768px) {
+    .category.active .category-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* LIGHTBOX */
@@ -324,14 +369,24 @@ section {
     inset: 0;
     background: rgba(11,11,11,0.95);
 
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 
     z-index: 999;
 
     cursor: pointer;
-    overflow: hidden; /* normal state */
+    overflow: hidden;
+
+    /* Smooth fade in/out */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#lightbox.open {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* IMAGE */
@@ -339,21 +394,33 @@ section {
     max-width: 90%;
     max-height: 90%;
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.92);
+    /* single unified transition for open, close and zoom */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#lightbox.open img {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ZOOM MODE */
 #lightbox.zoomed {
-    overflow: auto; /* 🔥 enables scroll */
-    cursor: default;
+    overflow: auto;
+    cursor: zoom-out;
 }
 
 /* ZOOMED IMAGE */
 #lightbox.zoomed img {
-    transform: scale(2); /* zoom level */
-    cursor: default;
+    transform: scale(1.7);
+    cursor: zoom-out;
+    opacity: 1;
+    /* smooth zoom transition */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
 }
-
 
 /* CONTACT */
 .contact-link {
@@ -361,7 +428,7 @@ section {
     text-decoration: none;
 }
 .contact-link:active {
-opacity: 0.7;
+    opacity: 0.7;
 }
 
 .contact-link:hover {
@@ -376,12 +443,10 @@ footer {
     background: black;
 }
 
-/* GOLD ACCENTS (TEXT ONLY, NO BACKGROUND) */
+/* GOLD ACCENTS */
 h1, h2 {
     color: #d4af37;
 }
-
-/* Contact links already gold — keep as is */
 
 html {
     scroll-behavior: smooth;
@@ -391,7 +456,7 @@ html {
 .socials {
     margin-top: 20px;
     display: flex;
-    gap: 20px; /* spacing between icons */
+    gap: 20px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
@@ -434,11 +499,9 @@ html {
     transition: 0.3s;
 }
 
-/* LABEL (HIDDEN INITIALLY) */
-/* LABEL (FLUID, NOT FIXED WIDTH) */
+/* LABEL - FIX: removed duplicate rule, kept only this correct one */
 .social .label {
     margin-left: 0;
-
     max-width: 0;
     overflow: hidden;
 
@@ -450,14 +513,14 @@ html {
 
     transition: max-width 0.5s ease,
                 opacity 0.3s ease 0.1s,
-                transform 0.3s ease;
+                transform 0.3s ease,
+                margin-left 0.3s ease;
 }
 
-/* HOVER EXPAND NATURALLY */
+/* HOVER EXPAND */
 .social:hover .label {
-    max-width: 200px; /* large enough for any text */
+    max-width: 200px;
     margin-left: 10px;
-
     opacity: 1;
     transform: translateX(0);
 }
@@ -468,17 +531,8 @@ html {
     }
 
     .social:hover .label {
-        max-width: 140px; /* slightly smaller for mobile */
+        max-width: 140px;
     }
-}
-
-/* HOVER EXPAND LABEL */
-.social:hover .label {
-    width: 90px; /* controls how far it expands */
-    margin-left: 10px;
-
-    opacity: 1;
-    transform: translateX(0);
 }
 
 /* COLOR SLIDE INSIDE CIRCLE */

@@ -6,7 +6,7 @@
         <title>KayGFX</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
+        <link rel="icon" type="image/png" href="icons/favicon.png">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -48,9 +48,6 @@
                 <img class="slide" src="1x/Artboard-19.jpg">
                 <img class="slide" src="1x/Artboard-20.jpg">
                 <img class="slide" src="1x/Artboard-21.jpg">
-                <img class="slide" src="1x/Artboard-22.jpg">
-                <img class="slide" src="1x/Artboard-23.jpg">
-                <img class="slide" src="1x/Artboard-24.jpg">
             </div>
 
             <div class="dark-overlay"></div>
@@ -62,18 +59,18 @@
             </div>
 
             <div class="dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+                <span class="dot active">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
+                <span class="dot">&#x2022;</span>
             </div>
 
             <div class="scroll-down"></div>
@@ -93,20 +90,7 @@
         <section class="portfolio reveal" id="portfolio">
             <h2>Catalog of Designs</h2>
 
-            <!-- CATEGORY 1 -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <h3>Birthday Flyers</h3>
-                    <span class="icon">+</span>
-                </div>
-
-                <div class="category-content">
-                    <img src="images/ansahApp.jpg" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-
-
-            <!-- CATEGORY 2 -->
+            <!-- CATEGORY: Church Events -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Church Events</h3>
@@ -118,7 +102,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 3 -->
+            <!-- CATEGORY: Infographics -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Infographics</h3>
@@ -130,7 +114,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 4 -->
+            <!-- CATEGORY: Special Events Flyers -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Special Events Flyers</h3>
@@ -145,7 +129,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 5 -->
+            <!-- CATEGORY: Campaign Event Design -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Campaign Event Design</h3>
@@ -158,7 +142,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 6 -->
+            <!-- CATEGORY: Certificates -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Certificates</h3>
@@ -171,7 +155,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 7 -->
+            <!-- CATEGORY: Citations -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Citations</h3>
@@ -182,13 +166,16 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 8 -->
+            <!-- CATEGORY: Social Media Posts -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Social Media Posts</h3>
                     <span class="icon">+</span>
                 </div>
                 <div class="category-content">
+                    <img src="images/gruds-oil.jpg" onclick="openLightbox(this.src)">
+                    <img src="images/counseling.jpg" onclick="openLightbox(this.src)">
+                    <img src="images/fredkac.jpg" onclick="openLightbox(this.src)">
                     <img src="images/samedia3.jpg" onclick="openLightbox(this.src)">
                     <img src="images/samedia2.jpg" onclick="openLightbox(this.src)">
                     <img src="images/social-media-post-2.jpg" onclick="openLightbox(this.src)">
@@ -199,7 +186,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 9 -->
+            <!-- CATEGORY: T-Shirt Designs -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>T-Shirt Designs</h3>
@@ -219,7 +206,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 10 -->
+            <!-- CATEGORY: Sports Design -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Sports Design</h3>
@@ -230,7 +217,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 11 -->
+            <!-- CATEGORY: Resume And CV -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Resume And CV</h3>
@@ -241,19 +228,21 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 12 -->
+            <!-- CATEGORY: Book Covers -->
+            <!-- NOTE: Replace the src values below with your actual book cover image filenames -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Book Covers</h3>
                     <span class="icon">+</span>
                 </div>
                 <div class="category-content">
-                    <img src="images" onclick="openLightbox(this.src)">
-                    <img src="images" onclick="openLightbox(this.src)">
+                    <img src="images/book-cover-1.jpg" onclick="openLightbox(this.src)">
+                    <!-- Add your second book cover image here, e.g.: -->
+                    <!-- <img src="images/book-cover-2.jpg" onclick="openLightbox(this.src)"> -->
                 </div>
             </div>
 
-            <!-- CATEGORY 13 -->
+            <!-- CATEGORY: Funeral Invitations -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Funeral Invitations</h3>
@@ -273,7 +262,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 14 -->
+            <!-- CATEGORY: Photo Restoration -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Photo Restoration</h3>
@@ -285,19 +274,19 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 15 -->
+            <!-- CATEGORY: Picture Editing -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Picture Editing</h3>
                     <span class="icon">+</span>
                 </div>
                 <div class="category-content">
-                    <img src="images" onclick="openLightbox(this.src)">
-                    <img src="images" onclick="openLightbox(this.src)">
+                    <img src="images/picture-edit-1.jpg" onclick="openLightbox(this.src)">
+                    <img src="images/picture-edit-2.jpg" onclick="openLightbox(this.src)">
                 </div>
             </div>
 
-            <!-- CATEGORY 16 -->
+            <!-- CATEGORY: Complimentary Cards -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Complimentary Cards</h3>
@@ -310,7 +299,7 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 17 -->
+            <!-- CATEGORY: Labels -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Labels</h3>
@@ -321,6 +310,7 @@
                 </div>
             </div>
 
+            <!-- CATEGORY: Branding -->
             <div class="category">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <h3>Branding</h3>
@@ -354,6 +344,18 @@
                 </div>
             </div>
 
+            <!-- CATEGORY: Birthday Flyers -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h3>Birthday Flyers</h3>
+                    <span class="icon">+</span>
+                </div>
+                <div class="category-content">
+                    <img src="images/bright-pic-birth.jpg" onclick="openLightbox(this.src)">
+                    <img src="images/ansahApp.jpg" onclick="openLightbox(this.src)">
+                </div>
+            </div>
+
         </section>
 
         <!-- CONTACT -->
@@ -374,7 +376,6 @@
                 </a>
             </p>
 
-
             <div class="socials">
 
                 <a href="https://web.facebook.com/kkayjoshua" target="_blank" class="social facebook">
@@ -387,7 +388,7 @@
                     <span class="label">Instagram</span>
                 </a>
 
-                <a href="https://www.linkedin.com/in/kaykay-josh-4358473ba " target="_blank" class="social linkedin">
+                <a href="https://www.linkedin.com/in/kaykay-josh-4358473ba" target="_blank" class="social linkedin">
                     <span class="icon"><img src="icons/linkedin-svgrepo-com.svg"></span>
                     <span class="label">LinkedIn</span>
                 </a>
@@ -402,7 +403,7 @@
                     <span class="label">Threads</span>
                 </a>
 
-                <a href="https://pin.it/3ryxeu4HP" target="_blank" class="social pinterest">
+                <a href="https://pin.it/7b5T5nLZ3" target="_blank" class="social pinterest">
                     <span class="icon"><img src="icons/pinterest-svgrepo-com.svg"></span>
                     <span class="label">Pinterest</span>
                 </a>
