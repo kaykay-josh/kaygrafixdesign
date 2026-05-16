@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KayGFX</title>
+    <title>KayGFX — Visual Design Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="icons/favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -84,22 +84,34 @@
     <!-- STATS BAR -->
     <div class="stats-bar reveal">
         <div class="stat-item">
-            <span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span>
+            <div class="stat-value-wrap">
+                <span class="stat-number" data-target="300">0</span>
+                <span class="stat-plus">+</span>
+            </div>
             <span class="stat-label">Projects Done</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number" data-target="80">0</span><span class="stat-plus">+</span>
+            <div class="stat-value-wrap">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-plus">+</span>
+            </div>
             <span class="stat-label">Happy Clients</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+            <div class="stat-value-wrap">
+                <span class="stat-number" data-target="5">0</span>
+                <span class="stat-plus">+</span>
+            </div>
             <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number" data-target="17">0</span><span class="stat-plus">+</span>
+            <div class="stat-value-wrap">
+                <span class="stat-number" data-target="17">0</span>
+                <span class="stat-plus">+</span>
+            </div>
             <span class="stat-label">Design Categories</span>
         </div>
     </div>
@@ -351,7 +363,7 @@
                     <div class="contact-icon">✉</div>
                     <div>
                         <span class="contact-label">Email</span>
-                        <a href="mailto:kaygrafixdesign@gmail.com" class="contact-link">kaygrafixdesign@gmail.com</a>
+                        <a href="mailto:kaygrafx@gmail.com" class="contact-link">kaygrafx@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-detail">
@@ -405,7 +417,17 @@
                     <button class="btn-outline" id="formReset">Send Another Message</button>
                 </div>
 
-                <form action="https://formsubmit.co/kaygrafx@gmail.com" method="POST" class="contact-form" id="contactForm">
+                <form
+                    class="contact-form"
+                    id="contactForm"
+                    action="https://formsubmit.co/kaygrafx@gmail.com"
+                    method="POST"
+                >
+                    <!-- FormSubmit config -->
+                    <input type="hidden" name="_captcha"  value="false">
+                    <input type="hidden" name="_subject"  value="New Hire Request — KayGrafix Design">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next"     value="https://kaykay-josh.github.io/kaygrafixdesign/portfolio.html?sent=true">
 
                     <div class="form-group">
                         <input type="text" id="fname" name="name" placeholder="Your Name" required>
@@ -451,7 +473,7 @@
                 <img src="SVG/primarylogo.svg" alt="KayGFX" class="primary-logo">
             </div>
             <p class="footer-tagline">Shaping Visual Identity</p>
-            <p class="footer-copy">© 2026 Kaygrafixdesign. All rights reserved.</p>
+            <p class="footer-copy">© 2026 KayGrafix. All rights reserved.</p>
         </div>
     </footer>
 
