@@ -94,7 +94,7 @@
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+            <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
             <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-divider"></div>
@@ -405,28 +405,18 @@
                     <button class="btn-outline" id="formReset">Send Another Message</button>
                 </div>
 
-                <form
-                    class="contact-form"
-                    id="contactForm"
-                    action="https://formsubmit.co/kaygrafx@gmail.com"
-                    method="POST"
-                >
-                    <!-- FormSubmit hidden config -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="New Hire Request — Kaygrafix Website">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://kaykay-josh.github.io/kaygrafixdesign/?sent=true">
+                <form action="https://formsubmit.co/kaygrafx@gmail.com" method="POST" class="contact-form" id="contactForm">
 
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        <label for="name">Your Name</label>
+                        <input type="text" id="fname" name="name" placeholder="Your Name" required>
+                        <label for="fname">Your Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email Address" required>
-                        <label for="email">Email Address</label>
+                        <input type="email" id="femail" name="email" placeholder="Email Address" required>
+                        <label for="femail">Email Address</label>
                     </div>
                     <div class="form-group">
-                        <select id="service" name="service" required>
+                        <select id="fservice" name="service" required>
                             <option value="" disabled selected>Type of Service</option>
                             <option>Flyer Design</option>
                             <option>Branding / Logo</option>
@@ -436,11 +426,11 @@
                             <option>Photo Editing / Restoration</option>
                             <option>Other</option>
                         </select>
-                        <label for="service">Type of Service</label>
+                        <label for="fservice">Type of Service</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-                        <label for="message">Your Message</label>
+                        <textarea id="fmessage" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                        <label for="fmessage">Your Message</label>
                     </div>
 
                     <button type="submit" class="btn-primary form-submit" id="submitBtn">
