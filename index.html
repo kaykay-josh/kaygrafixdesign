@@ -3,496 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KayGFX — Visual Design Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icons/favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <title>Welcome — KayGrafixDesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+
+        /* ─── RESET ─── */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --gold:       #d3af37;
+            --gold-light: #f0cc55;
+            --bg:         #080808;
+            --text:       #f5f1e8;
+            --muted:      rgba(245,241,232,0.45);
+        }
+
+        html, body {
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+        }
+
+        /* ─── CANVAS (geometric shapes) ─── */
+        #canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        /* ─── RADIAL GLOW ─── */
+        .glow {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(
+                ellipse 70% 60% at 50% 50%,
+                rgba(211,175,55,0.07) 0%,
+                transparent 70%
+            );
+            pointer-events: none;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%,100% { opacity: 0.6; }
+            50%      { opacity: 1; }
+        }
+
+        /* ─── CONTENT ─── */
+        .stage {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 40px 20px;
+        }
+
+        /* ICON */
+        .wlc-icon {
+            width: clamp(80px, 14vw, 130px);
+            height: clamp(80px, 14vw, 130px);
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.85);
+            animation: dropIn 0.9s cubic-bezier(0.34,1.3,0.64,1) 0.3s forwards;
+            filter: drop-shadow(0 0 30px rgba(211,175,55,0.35));
+        }
+
+        /* LOGO */
+        .wlc-logo {
+            margin-top: 24px;
+            width: clamp(140px, 28vw, 260px);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: riseIn 0.8s ease 0.85s forwards;
+            filter: drop-shadow(0 0 20px rgba(211,175,55,0.2));
+        }
+
+        /* TAGLINE */
+        .wlc-tagline {
+            margin-top: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.68rem, 2vw, 0.9rem);
+            font-weight: 300;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--muted);
+            opacity: 0;
+            animation: riseIn 0.8s ease 1.3s forwards;
+        }
+
+        /* DIVIDER */
+        .wlc-divider {
+            margin-top: 40px;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            animation: expandLine 1s ease 1.7s forwards;
+        }
+
+        @keyframes expandLine {
+            to { width: clamp(160px, 30vw, 300px); }
+        }
+
+        /* CTA BUTTON */
+        .wlc-btn {
+            margin-top: 44px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 36px;
+            border: 1px solid var(--gold);
+            border-radius: 60px;
+            text-decoration: none;
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: transparent;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: riseIn 0.8s ease 2s forwards;
+            transition: background 0.4s ease, color 0.4s ease,
+                        box-shadow 0.4s ease, transform 0.3s ease,
+                        gap 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* shimmer sweep on hover */
+        .wlc-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                transparent 0%, rgba(211,175,55,0.18) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .wlc-btn:hover::before { transform: translateX(100%); }
+
+        .wlc-btn:hover {
+            background: rgba(211,175,55,0.1);
+            box-shadow: 0 0 40px rgba(211,175,55,0.2), inset 0 0 20px rgba(211,175,55,0.05);
+            color: var(--gold);
+            transform: translateY(-3px);
+            gap: 20px;
+        }
+
+        /* ARROW SVG */
+        .arrow-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(211,175,55,0.5);
+            transition: border-color 0.3s ease, background 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .wlc-btn:hover .arrow-wrap {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .arrow-wrap svg {
+            transition: transform 0.3s ease;
+        }
+        .wlc-btn:hover .arrow-wrap svg {
+            transform: translateX(3px);
+        }
+
+        /* CORNER MARKS */
+        .corner {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            animation: fadeCorner 1s ease 2.2s forwards;
+        }
+        .corner-tl { top: 28px; left: 28px;
+            border-top: 1px solid rgba(211,175,55,0.35);
+            border-left: 1px solid rgba(211,175,55,0.35); }
+        .corner-tr { top: 28px; right: 28px;
+            border-top: 1px solid rgba(211,175,55,0.35);
+            border-right: 1px solid rgba(211,175,55,0.35); }
+        .corner-bl { bottom: 28px; left: 28px;
+            border-bottom: 1px solid rgba(211,175,55,0.35);
+            border-left: 1px solid rgba(211,175,55,0.35); }
+        .corner-br { bottom: 28px; right: 28px;
+            border-bottom: 1px solid rgba(211,175,55,0.35);
+            border-right: 1px solid rgba(211,175,55,0.35); }
+
+        @keyframes dropIn {
+            to { opacity:1; transform: translateY(0) scale(1); }
+        }
+        @keyframes riseIn {
+            to { opacity:1; transform: translateY(0); }
+        }
+        @keyframes fadeCorner {
+            to { opacity: 1; }
+        }
+
+        /* mobile */
+        @media (max-width: 480px) {
+            .wlc-btn { padding: 14px 26px; }
+            .corner { width: 28px; height: 28px; }
+        }
+
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-left">
-            <img src="SVG/icon.svg" class="nav-logo" alt="KayGFX Icon">
-            <img src="SVG/primarylogo.svg" class="primary-logo" alt="KayGFX">
-        </div>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Work</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="hire-btn">Hire Me</a>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu(event)">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+    <!-- ANIMATED CANVAS -->
+    <canvas id="canvas"></canvas>
+    <div class="glow"></div>
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="slides">
-            <img class="slide" src="1x/Artboard-7.jpg" alt="">
-            <img class="slide" src="1x/Artboard-10.jpg" alt="">
-            <img class="slide" src="1x/Artboard-12.jpg" alt="">
-            <img class="slide" src="1x/Artboard-13.jpg" alt="">
-            <img class="slide" src="1x/Artboard-14.jpg" alt="">
-            <img class="slide" src="1x/Artboard-15.jpg" alt="">
-            <img class="slide" src="1x/Artboard-16.jpg" alt="">
-            <img class="slide" src="1x/Artboard-17.jpg" alt="">
-            <img class="slide" src="1x/Artboard-18.jpg" alt="">
-            <img class="slide" src="1x/Artboard-19.jpg" alt="">
-            <img class="slide" src="1x/Artboard-20.jpg" alt="">
-            <img class="slide" src="1x/Artboard-21.jpg" alt="">
-        </div>
+    <!-- CORNER MARKS -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
 
-        <div class="dark-overlay"></div>
+    <!-- MAIN CONTENT -->
+    <div class="stage">
 
-        <div class="hero-text">
-            <img class="logokaygfx hero-logo-anim" src="SVG/icon.svg" alt="KayGFX">
-            <img class="hero-title hero-title-anim" src="SVG/secondarylogo.svg" alt="Kaygrafix Design">
-            <p class="hero-tagline"><span id="typed-text"></span><span class="cursor">|</span></p>
-            <div class="hero-cta hero-cta-anim">
-                <a href="#portfolio" class="btn-primary">View My Work</a>
-                <a href="#contact" class="btn-outline">Hire Me</a>
-            </div>
-        </div>
+        <img class="wlc-icon" src="SVG/icon.svg" alt="KayGFX Icon">
+        <img class="wlc-logo" src="SVG/primarylogo.svg" alt="KayGrafixDesign">
+        <p class="wlc-tagline">Shaping Visual Identity</p>
+        <div class="wlc-divider"></div>
 
-        <div class="dots">
-            <span class="dot active">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-            <span class="dot">&#x2022;</span>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- STATS BAR -->
-    <div class="stats-bar reveal">
-        <div class="stat-item">
-            <span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Projects Done</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="80">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Happy Clients</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="17">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Design Categories</span>
-        </div>
-    </div>
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-        <div class="about-inner reveal">
-            <div class="about-label">About Me</div>
-            <h2 class="about-heading">Crafting Visuals<br><em>That Speak</em></h2>
-            <p class="about-text">
-                I am a passionate graphic designer focused on creating visually engaging designs 
-                that communicate ideas effectively. If you are looking forward to growing and building
-                your brand with the best of designs that are very eye-catchy and engaging, <strong>Kaygrafix</strong> got you covered.
-            </p>
-            <div class="about-tags">
-                <span>Brand Identity</span>
-                <span>Flyer Design</span>
-                <span>Social Media</span>
-                <span>Photo Editing</span>
-                <span>T-Shirt Design</span>
-                <span>Certificates</span>
-            </div>
-            <a href="#contact" class="btn-primary">Work With Me</a>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section class="portfolio" id="portfolio">
-        <div class="section-header reveal">
-            <div class="about-label">Portfolio</div>
-            <h2>Catalog of Designs</h2>
-            <p class="section-sub">Browse through categories of work crafted with precision and creativity</p>
-        </div>
-
-        <!-- FILTER TABS -->
-        <div class="filter-tabs reveal">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="church-events">Church Events</button>
-            <button class="filter-btn" data-filter="infographics">Infographics</button>
-            <button class="filter-btn" data-filter="special-events">Special Events</button>
-            <button class="filter-btn" data-filter="campaign">Campaign</button>
-            <button class="filter-btn" data-filter="certificates">Certificates</button>
-            <button class="filter-btn" data-filter="social-media">Social Media</button>
-            <button class="filter-btn" data-filter="t-shirt">T-Shirts</button>
-            <button class="filter-btn" data-filter="branding">Branding</button>
-            <button class="filter-btn" data-filter="funeral">Funeral</button>
-            <button class="filter-btn" data-filter="other">Other</button>
-        </div>
-
-        <!-- PORTFOLIO GRID -->
-        <div class="portfolio-grid">
-
-            <!-- Church Events -->
-            <div class="grid-item" data-category="church-events"><img src="images/15-DAYS.jpg" class="lb-trigger" loading="lazy" alt="Church Event"><div class="grid-overlay"><span>Church Events</span></div></div>
-            <div class="grid-item" data-category="church-events"><img src="images/july.jpg" class="lb-trigger" loading="lazy" alt="Church Event"><div class="grid-overlay"><span>Church Events</span></div></div>
-
-            <!-- Infographics -->
-            <div class="grid-item" data-category="infographics"><img src="images/april-read.jpg" class="lb-trigger" loading="lazy" alt="Infographic"><div class="grid-overlay"><span>Infographics</span></div></div>
-            <div class="grid-item" data-category="infographics"><img src="images/MARCH.jpg" class="lb-trigger" loading="lazy" alt="Infographic"><div class="grid-overlay"><span>Infographics</span></div></div>
-
-            <!-- Special Events -->
-            <div class="grid-item" data-category="special-events"><img src="images/NAMING.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
-            <div class="grid-item" data-category="special-events"><img src="images/BIBLE-FEB.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
-            <div class="grid-item" data-category="special-events"><img src="images/GOB3.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
-            <div class="grid-item" data-category="special-events"><img src="images/grads.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
-            <div class="grid-item" data-category="special-events"><img src="images/ACTTSS.jpg" class="lb-trigger" loading="lazy" alt="Special Event"><div class="grid-overlay"><span>Special Events</span></div></div>
-
-            <!-- Campaign -->
-            <div class="grid-item" data-category="campaign"><img src="images/CHAIRMAN.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
-            <div class="grid-item" data-category="campaign"><img src="images/campaign.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
-            <div class="grid-item" data-category="campaign"><img src="images/key-reforms.jpg" class="lb-trigger" loading="lazy" alt="Campaign"><div class="grid-overlay"><span>Campaign</span></div></div>
-
-            <!-- Certificates -->
-            <div class="grid-item" data-category="certificates"><img src="images/franco_democert.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
-            <div class="grid-item" data-category="certificates"><img src="images/cert-1.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
-            <div class="grid-item" data-category="certificates"><img src="images/cert-3.jpg" class="lb-trigger" loading="lazy" alt="Certificate"><div class="grid-overlay"><span>Certificates</span></div></div>
-
-            <!-- Citations -->
-            <div class="grid-item" data-category="other"><img src="images/mum-citation-epuc.jpg" class="lb-trigger" loading="lazy" alt="Citation"><div class="grid-overlay"><span>Citations</span></div></div>
-
-            <!-- Social Media -->
-            <div class="grid-item" data-category="social-media"><img src="images/gruds-oil.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/counseling.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/fredkac.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/samedia3.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/samedia2.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/social-media-post-2.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/social-media-post-1.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/powerline.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/samedia1.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-            <div class="grid-item" data-category="social-media"><img src="images/fundsappeal.jpg" class="lb-trigger" loading="lazy" alt="Social Media"><div class="grid-overlay"><span>Social Media</span></div></div>
-
-            <!-- T-Shirts -->
-            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-1.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-2.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-3.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/t-shirt-design-4.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/aluminumBLUEBLACKMKP.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/aluminumyellowmockup.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/fodomenew.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/jhsshirtmissahoeblue.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/jhsshirtmissahoe.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-            <div class="grid-item" data-category="t-shirt"><img src="images/BAIKASHIRTMKPNEW.jpg" class="lb-trigger" loading="lazy" alt="T-Shirt"><div class="grid-overlay"><span>T-Shirt Design</span></div></div>
-
-            <!-- Sports -->
-            <div class="grid-item" data-category="other"><img src="images/matchday.jpg" class="lb-trigger" loading="lazy" alt="Sports"><div class="grid-overlay"><span>Sports Design</span></div></div>
-
-            <!-- Resume/CV -->
-            <div class="grid-item" data-category="other"><img src="images/cv-joshua.jpg" class="lb-trigger" loading="lazy" alt="Resume"><div class="grid-overlay"><span>Resume &amp; CV</span></div></div>
-
-            <!-- Book Covers -->
-            <div class="grid-item" data-category="other"><img src="images/book-cover-1.jpg" class="lb-trigger" loading="lazy" alt="Book Cover"><div class="grid-overlay"><span>Book Cover</span></div></div>
-
-            <!-- Funeral Invitations -->
-            <div class="grid-item" data-category="funeral"><img src="images/funeral_wom1.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/funeralman.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/eliza_funeral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/pozofuneral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/elizabeth_funeral.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/beauty3by4.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/FUNERAL-2.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/funeral-11.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/FUNERALINVITATION.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-            <div class="grid-item" data-category="funeral"><img src="images/funeral-receipt.jpg" class="lb-trigger" loading="lazy" alt="Funeral"><div class="grid-overlay"><span>Funeral Invitation</span></div></div>
-
-            <!-- Photo Restoration -->
-            <div class="grid-item" data-category="other"><img src="images/jacob.jpg" class="lb-trigger" loading="lazy" alt="Photo Restoration"><div class="grid-overlay"><span>Photo Restoration</span></div></div>
-            <div class="grid-item" data-category="other"><img src="images/nii-dad.jpg" class="lb-trigger" loading="lazy" alt="Photo Restoration"><div class="grid-overlay"><span>Photo Restoration</span></div></div>
-
-            <!-- Picture Editing -->
-            <div class="grid-item" data-category="other"><img src="images/picture-edit-1.jpg" class="lb-trigger" loading="lazy" alt="Picture Edit"><div class="grid-overlay"><span>Picture Editing</span></div></div>
-            <div class="grid-item" data-category="other"><img src="images/picture-edit-2.jpg" class="lb-trigger" loading="lazy" alt="Picture Edit"><div class="grid-overlay"><span>Picture Editing</span></div></div>
-
-            <!-- Complimentary Cards -->
-            <div class="grid-item" data-category="other"><img src="images/comp-1.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
-            <div class="grid-item" data-category="other"><img src="images/comp-2.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
-            <div class="grid-item" data-category="other"><img src="images/comp-3.jpg" class="lb-trigger" loading="lazy" alt="Card"><div class="grid-overlay"><span>Complimentary Cards</span></div></div>
-
-            <!-- Labels -->
-            <div class="grid-item" data-category="other"><img src="images/label-1.jpg" class="lb-trigger" loading="lazy" alt="Label"><div class="grid-overlay"><span>Labels</span></div></div>
-
-            <!-- Branding -->
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-1.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-2.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-3.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-4.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-5.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-6.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-7.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-8.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-9.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-10.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-11.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-12.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-13.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-14.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-15.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-16.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-17.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-18.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-19.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-20.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-21.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-22.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-23.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-            <div class="grid-item" data-category="branding"><img src="1x/Artboard-24.jpg" class="lb-trigger" loading="lazy" alt="Branding"><div class="grid-overlay"><span>Branding</span></div></div>
-
-            <!-- Birthday Flyers -->
-            <div class="grid-item" data-category="special-events"><img src="images/bright-pic-birth.jpg" class="lb-trigger" loading="lazy" alt="Birthday Flyer"><div class="grid-overlay"><span>Birthday Flyers</span></div></div>
-            <div class="grid-item" data-category="special-events"><img src="images/ansahApp.jpg" class="lb-trigger" loading="lazy" alt="Birthday Flyer"><div class="grid-overlay"><span>Birthday Flyers</span></div></div>
-
-        </div>
-
-        <!-- LOAD MORE -->
-        <div class="load-more-wrap reveal">
-            <button class="btn-outline" id="load-more-btn">Load More</button>
-        </div>
-
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials" id="testimonials">
-        <div class="section-header reveal">
-            <div class="about-label">Testimonials</div>
-            <h2>What Clients Say</h2>
-        </div>
-
-        <div class="testimonial-track reveal">
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Kaygrafix delivered an outstanding flyer design for our church event. Clean, professional and exactly what we envisioned. Highly recommend!"</p>
-                <div class="client-info">
-                    <div class="client-avatar">EK</div>
-                    <div>
-                        <strong>Elder Kwame</strong>
-                        <span>Church Administrator</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Our brand identity came alive after working with Kay. The t-shirt designs were perfect — our team loved every single piece."</p>
-                <div class="client-info">
-                    <div class="client-avatar">AA</div>
-                    <div>
-                        <strong>Abena Asante</strong>
-                        <span>Business Owner</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Quick turnaround, great communication, and the final product was stunning. Kay truly understands what it means to make a design speak."</p>
-                <div class="client-info">
-                    <div class="client-avatar">JM</div>
-                    <div>
-                        <strong>Joshua Mensah</strong>
-                        <span>Event Organiser</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"The social media graphics Kay made for us brought so much engagement. Clients kept asking who designed them — we're proud to say Kaygrafix!"</p>
-                <div class="client-info">
-                    <div class="client-avatar">RO</div>
-                    <div>
-                        <strong>Ruth Osei</strong>
-                        <span>Marketing Manager</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <div class="section-header reveal">
-            <div class="about-label">Contact</div>
-            <h2>Let's Work Together</h2>
-            <p class="section-sub">Ready to bring your vision to life? Send a message and let's create something great.</p>
-        </div>
-
-        <div class="contact-layout reveal">
-
-            <!-- CONTACT INFO -->
-            <div class="contact-info">
-                <div class="contact-detail">
-                    <div class="contact-icon">✉</div>
-                    <div>
-                        <span class="contact-label">Email</span>
-                        <a href="mailto:kaygrafixdesign@gmail.com" class="contact-link">kaygrafixdesign@gmail.com</a>
-                    </div>
-                </div>
-                <div class="contact-detail">
-                    <div class="contact-icon">📱</div>
-                    <div>
-                        <span class="contact-label">WhatsApp</span>
-                        <a href="https://wa.me/233571745254" target="_blank" class="contact-link">+233 571 745 254</a>
-                    </div>
-                </div>
-
-                <div class="socials">
-                    <a href="https://web.facebook.com/kkayjoshua" target="_blank" class="social facebook">
-                        <span class="icon"><img src="icons/facebook-svgrepo-com.svg" alt="Facebook"></span>
-                        <span class="label">Facebook</span>
-                    </a>
-                    <a href="https://www.instagram.com/kkayjoshua/?hl=en" target="_blank" class="social instagram">
-                        <span class="icon"><img src="icons/instagram-svgrepo-com.svg" alt="Instagram"></span>
-                        <span class="label">Instagram</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/kaykay-josh-4358473ba" target="_blank" class="social linkedin">
-                        <span class="icon"><img src="icons/linkedin-svgrepo-com.svg" alt="LinkedIn"></span>
-                        <span class="label">LinkedIn</span>
-                    </a>
-                    <a href="https://t.me/Joshkaykay" target="_blank" class="social telegram">
-                        <span class="icon"><img src="icons/Telegram_black_logo.svg" alt="Telegram"></span>
-                        <span class="label">Telegram</span>
-                    </a>
-                    <a href="https://www.threads.com/@kkayjoshua" target="_blank" class="social threads">
-                        <span class="icon"><img src="icons/500px-Threads_(app)_logo.svg.png" alt="Threads"></span>
-                        <span class="label">Threads</span>
-                    </a>
-                    <a href="https://pin.it/7b5T5nLZ3" target="_blank" class="social pinterest">
-                        <span class="icon"><img src="icons/pinterest-svgrepo-com.svg" alt="Pinterest"></span>
-                        <span class="label">Pinterest</span>
-                    </a>
-                    <a href="https://x.com/kaykay3551?s=09" target="_blank" class="social x">
-                        <span class="icon"><img src="icons/twitter-svgrepo-com.svg" alt="Twitter"></span>
-                        <span class="label">Twitter</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CONTACT FORM -->
-            <div class="contact-form-wrap">
-
-                <!-- SUCCESS MESSAGE -->
-                <div class="form-success" id="formSuccess">
-                    <div class="success-icon">✓</div>
-                    <h3>Message Sent!</h3>
-                    <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
-                    <button class="btn-outline" id="formReset">Send Another Message</button>
-                </div>
-
-                <form action="https://formsubmit.co/kaygrafx@gmail.com" method="POST" class="contact-form" id="contactForm">
-
-                    <div class="form-group">
-                        <input type="text" id="fname" name="name" placeholder="Your Name" required>
-                        <label for="fname">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="femail" name="email" placeholder="Email Address" required>
-                        <label for="femail">Email Address</label>
-                    </div>
-                    <div class="form-group">
-                        <select id="fservice" name="service" required>
-                            <option value="" disabled selected>Type of Service</option>
-                            <option>Flyer Design</option>
-                            <option>Branding / Logo</option>
-                            <option>Social Media Graphics</option>
-                            <option>T-Shirt Design</option>
-                            <option>Certificate / Citation</option>
-                            <option>Photo Editing / Restoration</option>
-                            <option>Other</option>
-                        </select>
-                        <label for="fservice">Type of Service</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="fmessage" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-                        <label for="fmessage">Your Message</label>
-                    </div>
-
-                    <button type="submit" class="btn-primary form-submit" id="submitBtn">
-                        <span id="submitText">Send Message</span>
-                        <span id="submitSpinner" style="display:none;">Sending…</span>
-                    </button>
-                    <p class="form-note" id="form-note"></p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <img src="SVG/icon.svg" alt="KayGFX" class="nav-logo">
-                <img src="SVG/primarylogo.svg" alt="KayGFX" class="primary-logo">
-            </div>
-            <p class="footer-tagline">Shaping Visual Identity</p>
-            <p class="footer-copy">© 2026 Kaygrafixdesign. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-
-        <!-- CLOSE BUTTON -->
-        <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <line x1="1" y1="1" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="21" y1="1" x2="1" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-        </button>
-
-        <!-- COUNTER -->
-        <div class="lb-counter" id="lbCounter">1 / 1</div>
-
-        <!-- PREV ARROW -->
-        <button class="lb-btn lb-arrow lb-prev" id="lbPrev" aria-label="Previous image">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <polyline points="18,4 8,14 18,24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-
-        <!-- IMAGE STAGE -->
-        <div class="lb-stage" id="lbStage">
-            <img class="lb-img" id="lbImg" alt="Design preview">
-        </div>
-
-        <!-- NEXT ARROW -->
-        <button class="lb-btn lb-arrow lb-next" id="lbNext" aria-label="Next image">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <polyline points="10,4 20,14 10,24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-
-        <!-- HINT -->
-        <div class="lb-hint" id="lbHint">Double-click to zoom</div>
+        <a class="wlc-btn" href="portfolio.html" target="_blank">
+            <span>To My Portfolio</span>
+            <span class="arrow-wrap">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10M8 3l4 4-4 4"
+                          stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </a>
 
     </div>
 
-    <script src="script.js"></script>
+    <script>
+    /* ─── GEOMETRIC SHAPES CANVAS ─── */
+    (function () {
+        var canvas = document.getElementById("canvas");
+        var ctx    = canvas.getContext("2d");
+        var W, H, shapes = [], lines = [], mouse = { x: -999, y: -999 };
+        var GOLD  = "rgba(211,175,55,";
+        var WHITE = "rgba(245,241,232,";
+        var SHAPE_COUNT = 28;
+        var LINE_COUNT  = 12;
+
+        function resize() {
+            W = canvas.width  = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        /* Track mouse for subtle parallax */
+        window.addEventListener("mousemove", function (e) {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        /* ─ Shape types: triangle, square, hexagon, diamond, ring ─ */
+        var TYPES = ["triangle","square","hexagon","diamond","ring"];
+
+        function rand(a, b) { return a + Math.random() * (b - a); }
+        function randInt(a, b) { return Math.floor(rand(a, b)); }
+
+        function makeShape() {
+            var type  = TYPES[randInt(0, TYPES.length)];
+            var size  = rand(10, 52);
+            var isGold = Math.random() > 0.5;
+            return {
+                type:    type,
+                x:       rand(0, W),
+                y:       rand(0, H),
+                size:    size,
+                baseSize: size,
+                angle:   rand(0, Math.PI * 2),
+                rotSpeed: rand(-0.006, 0.006),
+                vx:      rand(-0.25, 0.25),
+                vy:      rand(-0.25, 0.25),
+                alpha:   rand(0.06, 0.22),
+                color:   isGold ? GOLD : WHITE,
+                filled:  Math.random() > 0.6,
+                lineW:   rand(0.5, 1.5),
+                pulse:   rand(0, Math.PI * 2),
+                pulseSpeed: rand(0.008, 0.022)
+            };
+        }
+
+        function makeLine() {
+            var vert = Math.random() > 0.5;
+            return {
+                x1: rand(0.05 * W, 0.95 * W),
+                y1: rand(0.05 * H, 0.95 * H),
+                len: rand(40, 160),
+                angle: rand(0, Math.PI * 2),
+                alpha: rand(0.04, 0.12),
+                speed: rand(0.003, 0.012),
+                phase: rand(0, Math.PI * 2),
+                color: Math.random() > 0.5 ? GOLD : WHITE
+            };
+        }
+
+        for (var i = 0; i < SHAPE_COUNT; i++) shapes.push(makeShape());
+        for (var j = 0; j < LINE_COUNT;  j++) lines.push(makeLine());
+
+        /* Draw a shape */
+        function drawShape(s) {
+            ctx.save();
+            ctx.translate(s.x, s.y);
+            ctx.rotate(s.angle);
+
+            /* subtle mouse parallax — closer shapes shift more */
+            var dx  = (mouse.x - W / 2) * 0.012 * (s.baseSize / 50);
+            var dy  = (mouse.y - H / 2) * 0.012 * (s.baseSize / 50);
+            ctx.translate(dx, dy);
+
+            var pulse = Math.sin(s.pulse) * 0.12;
+            var r = s.size * (1 + pulse);
+
+            ctx.globalAlpha = s.alpha * (0.85 + 0.15 * Math.sin(s.pulse));
+            ctx.strokeStyle = s.color + "1)";
+            ctx.fillStyle   = s.color + "0.4)";
+            ctx.lineWidth   = s.lineW;
+
+            ctx.beginPath();
+            switch (s.type) {
+                case "triangle":
+                    ctx.moveTo(0, -r);
+                    ctx.lineTo(r * 0.866, r * 0.5);
+                    ctx.lineTo(-r * 0.866, r * 0.5);
+                    ctx.closePath();
+                    break;
+                case "square":
+                    ctx.rect(-r * 0.7, -r * 0.7, r * 1.4, r * 1.4);
+                    break;
+                case "hexagon":
+                    for (var k = 0; k < 6; k++) {
+                        var a = (Math.PI / 3) * k - Math.PI / 6;
+                        k === 0 ? ctx.moveTo(r * Math.cos(a), r * Math.sin(a))
+                                : ctx.lineTo(r * Math.cos(a), r * Math.sin(a));
+                    }
+                    ctx.closePath();
+                    break;
+                case "diamond":
+                    ctx.moveTo(0, -r);
+                    ctx.lineTo(r * 0.6, 0);
+                    ctx.lineTo(0, r);
+                    ctx.lineTo(-r * 0.6, 0);
+                    ctx.closePath();
+                    break;
+                case "ring":
+                    ctx.arc(0, 0, r, 0, Math.PI * 2);
+                    ctx.globalAlpha = s.alpha * 0.7;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(0, 0, r * 0.6, 0, Math.PI * 2);
+                    break;
+            }
+            s.filled ? ctx.fill() : ctx.stroke();
+            ctx.restore();
+        }
+
+        /* Draw floating accent lines */
+        function drawLine(l) {
+            ctx.save();
+            ctx.translate(l.x1, l.y1);
+            ctx.rotate(l.angle + Math.sin(l.phase) * 0.3);
+            ctx.globalAlpha = l.alpha * (0.6 + 0.4 * Math.sin(l.phase));
+            ctx.strokeStyle = l.color + "1)";
+            ctx.lineWidth   = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(l.len, 0);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        /* Connect nearby shapes with faint lines */
+        function drawConnections() {
+            var DIST = 120;
+            for (var a = 0; a < shapes.length; a++) {
+                for (var b = a + 1; b < shapes.length; b++) {
+                    var dx  = shapes[a].x - shapes[b].x;
+                    var dy  = shapes[a].y - shapes[b].y;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < DIST) {
+                        ctx.save();
+                        ctx.globalAlpha = (1 - dist / DIST) * 0.07;
+                        ctx.strokeStyle = GOLD + "1)";
+                        ctx.lineWidth   = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(shapes[a].x, shapes[a].y);
+                        ctx.lineTo(shapes[b].x, shapes[b].y);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+            }
+        }
+
+        /* ANIMATE */
+        function tick() {
+            ctx.clearRect(0, 0, W, H);
+
+            drawConnections();
+            lines.forEach(function (l) {
+                l.phase += l.speed;
+                drawLine(l);
+            });
+            shapes.forEach(function (s) {
+                s.angle   += s.rotSpeed;
+                s.pulse   += s.pulseSpeed;
+                s.x       += s.vx;
+                s.y       += s.vy;
+                if (s.x < -80)  s.x = W + 80;
+                if (s.x > W+80) s.x = -80;
+                if (s.y < -80)  s.y = H + 80;
+                if (s.y > H+80) s.y = -80;
+                drawShape(s);
+            });
+
+            requestAnimationFrame(tick);
+        }
+        tick();
+    }());
+    </script>
+
 </body>
 </html>
