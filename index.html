@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KayGrafix</title>
+    <title>Welcome — KayGrafixDesign</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icons/favicon.png">
     <style>
 
         /* ─── RESET ─── */
@@ -182,9 +181,24 @@
             border-color: var(--gold);
         }
 
+        .wlc-btn:active .arrow-wrap {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+        }
+
         .arrow-wrap svg {
             transition: transform 0.3s ease;
         }
+
+        .wlc-btn:hover .arrow-wrap svg path,
+        .wlc-btn:active .arrow-wrap svg path {
+            stroke: #0b0b0b;
+        }
+
+        .arrow-wrap svg path {
+            transition: stroke 0.3s ease;
+        }
+
         .wlc-btn:hover .arrow-wrap svg {
             transform: translateX(3px);
         }
