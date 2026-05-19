@@ -456,6 +456,13 @@ h2 {
     gap: 6px;
 }
 
+.stat-value-wrap {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    line-height: 1;
+}
+
 .stat-number {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(2.4rem, 5vw, 3.5rem);
@@ -466,11 +473,13 @@ h2 {
 
 .stat-plus {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(0.7rem, 1.4vw, 0.95rem);
     color: var(--gold);
+    font-weight: 500;
     line-height: 1;
-    align-self: flex-start;
-    margin-top: 4px;
+    position: relative;
+    top: 4px;
+    margin-left: 2px;
 }
 
 .stat-label {
@@ -831,7 +840,6 @@ h2 {
 }
 
 .contact-icon {
-    font-size: 1.2rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -841,6 +849,14 @@ h2 {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.contact-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(97%) sepia(5%) saturate(300%) hue-rotate(10deg) brightness(98%);
 }
 
 .contact-label {
