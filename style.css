@@ -477,9 +477,9 @@ h2 {
     color: var(--gold);
     font-weight: 500;
     line-height: 1;
-    position: relative;
-    top: 4px;
+    top: 0px;
     margin-left: 2px;
+    align-self: flex-start;
 }
 
 .stat-label {
