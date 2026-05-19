@@ -449,9 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ----------------------------------------------------------
-       9. CONTACT FORM — WhatsApp (guaranteed, zero setup)
-          Composes a pre-filled WhatsApp message and sends it
-          directly to your WhatsApp number when client hits Send.
+       9. CONTACT FORM — FormSubmit (sends email to kaygrafx@gmail.com)
     ---------------------------------------------------------- */
     var contactForm   = document.getElementById("contactForm");
     var formSuccess   = document.getElementById("formSuccess");
@@ -474,48 +472,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showFormSuccess() {
-        if (contactForm) contactForm.style.display  = "none";
+        if (contactForm) contactForm.style.display = "none";
         if (formSuccess) {
             formSuccess.classList.add("visible");
             formSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     }
 
+    // Show success card if redirected back with ?sent=true after FormSubmit
+    if (window.location.search.includes("sent=true") && formSuccess) {
+        showFormSuccess();
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
             var name    = (document.getElementById("fname")    || {}).value || "";
             var email   = (document.getElementById("femail")   || {}).value || "";
             var service = (document.getElementById("fservice") || {}).value || "";
             var message = (document.getElementById("fmessage") || {}).value || "";
 
             if (!name.trim() || !email.trim() || !service || !message.trim()) {
+                e.preventDefault();
                 setNote("Please fill in all fields.", "#e05a5a");
                 return;
             }
 
+            // Valid — let the form submit naturally to FormSubmit
             setNote("");
             setSubmitting(true);
-
-            // Build WhatsApp message
-            var text = "Hello Kaygrafix!\n\n"
-                + "Name: " + name.trim() + "\n"
-                + "Email: " + email.trim() + "\n"
-                + "Service: " + service + "\n\n"
-                + "Message:\n" + message.trim();
-
-            var url = "https://wa.me/233571745254?text=" + encodeURIComponent(text);
-
-            // Open WhatsApp in a new tab
-            window.open(url, "_blank");
-
-            // Show success state after short delay
-            setTimeout(function () {
-                setSubmitting(false);
-                showFormSuccess();
-                contactForm.reset();
-            }, 800);
+            // No e.preventDefault() — form submits to FormSubmit action URL
         });
     }
 
