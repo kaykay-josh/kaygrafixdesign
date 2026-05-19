@@ -479,29 +479,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Show success card if redirected back with ?sent=true after FormSubmit
-    if (window.location.search.includes("sent=true") && formSuccess) {
-        showFormSuccess();
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
     if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Always prevent default — we use fetch (Web3Forms AJAX)
+
             var name    = (document.getElementById("fname")    || {}).value || "";
             var email   = (document.getElementById("femail")   || {}).value || "";
             var service = (document.getElementById("fservice") || {}).value || "";
             var message = (document.getElementById("fmessage") || {}).value || "";
 
+            // Validate
             if (!name.trim() || !email.trim() || !service || !message.trim()) {
-                e.preventDefault();
                 setNote("Please fill in all fields.", "#e05a5a");
                 return;
             }
 
-            // Valid — let the form submit naturally to FormSubmit
             setNote("");
             setSubmitting(true);
-            // No e.preventDefault() — form submits to FormSubmit action URL
+
+            // Build form data for Web3Forms
+            var data = {
+                access_key: document.querySelector('[name="access_key"]').value,
+                subject:    "New Hire Request — KayGrafix Design",
+                from_name:  "KayGrafix Website",
+                name:    name.trim(),
+                email:   email.trim(),
+                service: service,
+                message: message.trim()
+            };
+
+            // Send via fetch to Web3Forms API
+            fetch("https://api.web3forms.com/submit", {
+                method:  "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body:    JSON.stringify(data)
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (result) {
+                setSubmitting(false);
+                if (result.success) {
+                    showFormSuccess();
+                    contactForm.reset();
+                } else {
+                    setNote("Something went wrong. Please try again.", "#e05a5a");
+                }
+            })
+            .catch(function () {
+                setSubmitting(false);
+                setNote("Network error. Please check your connection and try again.", "#e05a5a");
+            });
         });
     }
 
