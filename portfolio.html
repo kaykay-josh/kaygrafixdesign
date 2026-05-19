@@ -361,14 +361,14 @@
             <!-- CONTACT INFO -->
             <div class="contact-info">
                 <div class="contact-detail">
-                    <div class="contact-icon">✉</div>
+                    <div class="contact-icon"><img src="icons/email-1-svgrepo-com.svg" alt="Email"></div>
                     <div>
                         <span class="contact-label">Email</span>
                         <a href="mailto:kaygrafx@gmail.com" class="contact-link">kaygrafx@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-detail">
-                    <div class="contact-icon">📱</div>
+                    <div class="contact-icon"><img src="icons/whatsapp-fill-svgrepo-com.svg" alt="WhatsApp"></div>
                     <div>
                         <span class="contact-label">WhatsApp</span>
                         <a href="https://wa.me/233571745254" target="_blank" class="contact-link">+233 571 745 254</a>
@@ -421,11 +421,14 @@
                 <form
                     class="contact-form"
                     id="contactForm"
+                    action="https://formsubmit.co/kaygrafx@gmail.com"
+                    method="POST"
                 >
-                    <!-- Web3Forms config — replace YOUR_KEY_HERE with your actual key -->
-                    <input type="hidden" name="access_key" value="2558e749-6690-4592-ae8e-e7ddcc9d6936">
-                    <input type="hidden" name="subject"    value="New Hire Request — KayGrafix Design">
-                    <input type="hidden" name="from_name"  value="KayGrafix Website">
+                    <!-- FormSubmit config -->
+                    <input type="hidden" name="_captcha"  value="false">
+                    <input type="hidden" name="_subject"  value="New Hire Request — KayGrafix Design">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next"     value="https://kaykay-josh.github.io/kaygrafixdesign/portfolio.html?sent=true">
 
                     <div class="form-group">
                         <input type="text" id="fname" name="name" placeholder="Your Name" required>
